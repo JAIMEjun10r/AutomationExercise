@@ -34,9 +34,10 @@ O projeto inclui testes para as seguintes funcionalidades:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   '''
+        git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
 
 2. Navegue até o diretório do projeto:
-    '''bash
-    cd seu-reposITORIO'''
+   '''bash
+        cd seu-reposITORIO
+   '''
