@@ -38,6 +38,6 @@ O projeto inclui testes para as seguintes funcionalidades:
    ```
 
 2. Navegue até o diretório do projeto:
-   '''bash
+   ```bash
         cd seu-reposITORIO
-   '''
+   ```
