@@ -39,5 +39,26 @@ O projeto inclui testes para as seguintes funcionalidades:
 
 2. Navegue até o diretório do projeto:
    ```bash
-        cd seu-reposITORIO
+        cd seu-repositorio
    ```
+
+3. Instale as dependências:
+
+   ```bash
+        npm install     
+   ```
+
+4. Configure as variáveis de ambiente:
+   ```bash  
+        CORRECT_EMAIL=seu_email@exemplo.com
+        CORRECT_PASSWORD=sua_senha
+        CORRECT_USER=usuario_existente       
+   ```
+
+5. Execute os testes:
+   ```bash
+        npx playwright test
+   ```
+
+Licença
+Este projeto está licenciado sob a MIT License. Veja o arquivo LICENSE para mais detalhes.
