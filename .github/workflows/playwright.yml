@@ -12,19 +12,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
+    # Cache npm dependencies
+    - name: Cache node modules
+      uses: actions/cache@v3
+      id: npm-cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    # Cache Playwright browsers
+    - name: Cache Playwright browsers
+      uses: actions/cache@v3
+      id: playwright-cache
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
+
+    # Install dependencies only if cache miss
     - name: Install dependencies
+      if: steps.npm-cache.outputs.cache-hit != 'true'
       run: npm ci
+
+    # Install Playwright browsers only if cache miss
     - name: Install Playwright Browsers
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       env:
         CORRECT_EMAIL: ${{ secrets.CORRECT_EMAIL }}
         CORRECT_PASSWORD: ${{ secrets.CORRECT_PASSWORD }}
         CORRECT_USER: ${{ secrets.CORRECT_USER }}
       run: npx playwright test
+
     - uses: actions/upload-artifact@v4
       if: always()
       with:
