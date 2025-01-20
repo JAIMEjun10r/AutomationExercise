@@ -16,6 +16,10 @@ jobs:
       with:
         node-version: lts/*
     - name: Install dependencies
+      env:
+        CORRECT_EMAIL: ${{ secrets.CORRECT_EMAIL }}
+        CORRECT_PASSWORD: ${{ secrets.CORRECT_PASSWORD }}
+        CORRECT_USER: ${{ secrets.CORRECT_USER }}
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
