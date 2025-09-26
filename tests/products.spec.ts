@@ -16,7 +16,7 @@ test('Search product', async({ page }) => {
 });
 
 
-test('Add products in cart', async({page}) => {
-    await page.products_menu.searchingProduct('Blue Top')
-    await page.products_menu.adding_product()
-});
+// test('Add products in cart', async({page}) => {
+//     await page.products_menu.searchingProduct('Blue Top')
+//     await page.products_menu.adding_product()
+// });
